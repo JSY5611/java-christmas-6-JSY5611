@@ -29,20 +29,23 @@ public class MenuValidator {
     private void convertMenuHashMap(String inputMenu) {
         try {
             String[] menu = inputMenu.split(",");
-
-            for (String menuCount : menu) {
-                String[] menuAndCount = menuCount.split("-");
-                String menuName = menuAndCount[0];
-                count = Integer.parseInt(menuAndCount[1]);
-                validateDuplicateMenu(menuName);
-                validateCheckMenuCount(count);
-                totalCount += count;
-                this.menu.put(Menu.findMenu(menuName), count);
-            }
+            validateMenuAndCount(menu);
         } catch (Exception e) {
             throw new IllegalArgumentException(ErrorMessage.MENU_ERROR.getMessage());
         }
 
+    }
+
+    private void validateMenuAndCount(String[] menu) {
+        for (String menuCount : menu) {
+            String[] menuAndCount = menuCount.split("-");
+            String menuName = menuAndCount[0];
+            count = Integer.parseInt(menuAndCount[1]);
+            validateDuplicateMenu(menuName);
+            validateCheckMenuCount(count);
+            totalCount += count;
+            this.menu.put(Menu.findMenu(menuName), count);
+        }
     }
 
     private void validateCheckMenuCount(int count) {
