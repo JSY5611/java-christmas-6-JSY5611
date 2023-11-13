@@ -22,20 +22,22 @@ public class EventValidator {
     }
 
     private void validateEvent(int inputDay, int orderPrice) {
-        if(christmasEvent(inputDay) != 0) {
-            event.put(EventDay.CHRISTMAS.getName(), christmasEvent(inputDay));
-        }
-        if(weekdayEvent(inputDay) != 0) {
-            event.put(EventDay.WEEKDAY.getName(), weekdayEvent(inputDay));
-        }
-        if(weekendEvent(inputDay) != 0) {
-            event.put(EventDay.WEEKEND.getName(), weekendEvent(inputDay));
-        }
-        if(specialEvent(inputDay) != 0) {
-            event.put(EventDay.SPECIAL.getName(), specialEvent(inputDay));
-        }
-        if(presentationEvent(orderPrice) != 0) {
-            event.put(EventDay.PRESENTATION.getName(), presentationEvent(orderPrice));
+        int christmasEvent = christmasEvent(inputDay);
+        int weekdayEvent = weekdayEvent(inputDay);
+        int weekendEvent = weekendEvent(inputDay);
+        int specialEvent = specialEvent(inputDay);
+        int presentationEvent = presentationEvent(orderPrice);
+
+        checkEventAndAdd(EventDay.CHRISTMAS, christmasEvent);
+        checkEventAndAdd(EventDay.WEEKDAY, weekdayEvent);
+        checkEventAndAdd(EventDay.WEEKEND, weekendEvent);
+        checkEventAndAdd(EventDay.SPECIAL, specialEvent);
+        checkEventAndAdd(EventDay.PRESENTATION, presentationEvent);
+    }
+
+    private void checkEventAndAdd(EventDay eventDay, int getEventPrice) {
+        if(getEventPrice != 0) {
+            event.put(eventDay.getName(), getEventPrice);
         }
     }
 
@@ -55,7 +57,6 @@ public class EventValidator {
         }
         return 0;
     }
-    // 평일 할인 (일-목) 디저트 메뉴 2023 할인
     private int weekdayEvent(int inputDay) {
         String weekDay = convertToWeekDay(inputDay);
         if(findEventDay(weekDay) == EventDay.WEEKDAY) {
@@ -64,7 +65,6 @@ public class EventValidator {
         return 0;
     }
 
-    // 주말 할인 (금-토) 메인 메뉴 2023 할인
     private int weekendEvent(int inputDay) {
         String weekDay = convertToWeekDay(inputDay);
         if(findEventDay(weekDay) == EventDay.WEEKEND) {
@@ -86,13 +86,6 @@ public class EventValidator {
             return EventDay.PRESENTATION.getEventPrice();
         }
         return 0;
-    }
-
-    public int getTotalDiscountPrice() {
-        for(String key : event.keySet()) {
-            totalDiscountPrice += event.get(key);
-        }
-        return totalDiscountPrice;
     }
 
     public HashMap<String, Integer> getEvent() {
