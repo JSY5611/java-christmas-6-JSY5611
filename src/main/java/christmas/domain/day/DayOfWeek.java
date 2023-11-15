@@ -1,4 +1,6 @@
-package christmas.domain;
+package christmas.domain.day;
+
+import christmas.error.ErrorMessage;
 
 public enum DayOfWeek {
     SUN("일요일", 3),
@@ -9,25 +11,21 @@ public enum DayOfWeek {
     FRI("금요일", 1),
     SAT("토요일", 2);
 
-    private String day;
-    private int dayOfWeek;
+    private int day;
+    private String dayOfWeek;
 
-    DayOfWeek(String day, int dayOfWeek) {
+    DayOfWeek(String dayOfweek, int day) {
         this.day = day;
-        this.dayOfWeek = dayOfWeek;
+        this.dayOfWeek = dayOfweek;
     }
 
-    public String getDay() {
+    public int getDay() {
         return day;
-    }
-
-    public int getDayOfWeek() {
-        return dayOfWeek;
     }
 
     public static DayOfWeek of(int dayOfWeek) {
         for (DayOfWeek day : DayOfWeek.values()) {
-            if (day.dayOfWeek == dayOfWeek) {
+            if (day.day == dayOfWeek) {
                 return day;
             }
         }
