@@ -1,14 +1,12 @@
 package christmas.controller;
 
-import christmas.domain.ErrorMessage;
+import christmas.error.ErrorMessage;
 import christmas.domain.event.EventDay;
 import christmas.domain.menu.Menu;
 import christmas.service.BenefitValidator;
 import christmas.service.DayValidator;
 import christmas.service.EventValidator;
 import christmas.service.MenuValidator;
-import christmas.view.InputView;
-import christmas.view.OutputView;
 
 import java.util.HashMap;
 
