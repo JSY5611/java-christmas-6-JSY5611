@@ -76,6 +76,13 @@ class MenuValidatorTest {
     }
 
     @Test
+    void 메뉴_개수_초과_예외처리_2() {
+        String input = "타파스-1,시저샐러드-2,바비큐립-2,해산물파스타-3,아이스크림-5,레드와인-5,티본스테이크-5,제로콜라-8";
+        assertThrows(IllegalArgumentException.class, ()
+                -> new MenuValidator(input));
+    }
+
+    @Test
     void 메뉴_개수_음수_예외처리() {
         String input = "티본스테이크--1";
 
