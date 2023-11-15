@@ -1,6 +1,6 @@
 package christmas.service;
 
-import christmas.domain.ErrorMessage;
+import christmas.error.ErrorMessage;
 
 public class DayValidator {
 
