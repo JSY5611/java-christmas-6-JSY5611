@@ -84,7 +84,7 @@ public class EventValidator {
     }
 
     private int presentationEvent(int orderPrice) {
-        if(orderPrice >= ParticipationMoney.PRESNETATION_MINIMUM_MONEY.getMoney()) {
+        if(orderPrice >= ParticipationMoney.PRESENTATION_MINIMUM_MONEY.getMoney()) {
             return EventDay.PRESENTATION.getEventPrice();
         }
         return 0;
