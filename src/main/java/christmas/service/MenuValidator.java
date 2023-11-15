@@ -1,12 +1,10 @@
 package christmas.service;
 
-import christmas.domain.ErrorMessage;
+import christmas.error.ErrorMessage;
 import christmas.domain.menu.Menu;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static java.lang.Long.sum;
 
 
 public class MenuValidator {
