@@ -5,6 +5,8 @@ import christmas.error.ErrorMessage;
 public class DayValidator {
 
     private int day;
+    private static final int firstDay = 1;
+    private static final int lastDay = 31;
 
     public DayValidator(String inputDay) {
         this.day = Integer.parseInt(inputDay);
@@ -18,7 +20,7 @@ public class DayValidator {
     }
 
     private static boolean isValidDay(int day) {
-        return day >= 1 && day <= 31;
+        return day >= firstDay && day <= lastDay;
     }
 
     public int getDay() {
