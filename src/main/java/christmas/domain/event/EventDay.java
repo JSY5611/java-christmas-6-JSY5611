@@ -1,6 +1,6 @@
 package christmas.domain.event;
 
-import christmas.domain.DayOfWeek;
+import christmas.domain.day.DayOfWeek;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ public enum EventDay {
 
     private static String NO_BADGE = "없음";
 
-    private static List<String> weekend = List.of(DayOfWeek.FRI.getDay(), DayOfWeek.SAT.getDay());
+    private static List<Integer> weekend = List.of(DayOfWeek.FRI.getDay(), DayOfWeek.SAT.getDay());
 
     EventDay(String name, int eventPrice) {
         this.name = name;
@@ -49,7 +49,7 @@ public enum EventDay {
     public int getEventPrice() {
         return eventPrice;
     }
-    public static EventDay findEventDay(String weekDay) {
+    public static EventDay findEventDay(int weekDay) {
         if(weekend.contains(weekDay)) {
             return WEEKEND;
         }
