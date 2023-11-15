@@ -1,6 +1,6 @@
 package christmas.domain.menu;
 
-import christmas.domain.ErrorMessage;
+import christmas.error.ErrorMessage;
 
 public enum Menu {
 
